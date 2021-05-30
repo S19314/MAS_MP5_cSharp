@@ -15,6 +15,8 @@ namespace MP5.Models
         public double BulletSpeed { get; set; }
         public double FireDistance { get; set; }
 
+        public ICollection<Attachment> Attachments { get; set; }
+
         public Firearm()
         {
         }

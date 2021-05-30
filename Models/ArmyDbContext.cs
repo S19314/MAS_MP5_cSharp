@@ -14,6 +14,7 @@ namespace MP5.Models
         public DbSet<Firearm> Firearms { get; set; }
         public DbSet<SniperRifle> SniperRifles { get; set; }
         public DbSet<AssaultRifle> AssaultRifles { get; set; }
+        public DbSet<Attachment> Attachments { get; set; }
         public ArmyDbContext() { }
         public ArmyDbContext(DbContextOptions<ArmyDbContext> options) : base(options)
         {
@@ -73,12 +74,25 @@ namespace MP5.Models
             modelBuilder.Entity<SniperRifle>()
                 .ToTable("SniperRifle");
 
-            /*
-            modelBuilder.Entity<Firearm>()
-                .Property(e => e.Id)
-                .dele ;
-            */
 
+            modelBuilder.Entity<Attachment>()
+                .ToTable("Attachment");
+            modelBuilder.Entity<Attachment>()
+                .Property(e => e.Id);
+            modelBuilder.Entity<Attachment>()
+                .Property(e => e.Name)
+                .HasMaxLength(100);
+            
+            modelBuilder.Entity<Attachment>()
+                .HasOne(b => b.Firearm)
+                .WithMany(a => a.Attachments)
+                .OnDelete(DeleteBehavior.SetNull);
+
+            /*
+            modelBuilder.Entity<Attachment>()
+                // .Property(e => e.FirearmId)
+                .HasOptional;
+            */
         }
         
     }
