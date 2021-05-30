@@ -8,15 +8,17 @@ namespace MP5
     {
         public static void Main(string[] args)
         {
-            var optionBuilder = new DbContextOptionsBuilder<ArmyDbContext>();
-            var options = optionBuilder
-                .UseSqlServer(@"Server=DESKTOP-QBPEBIC\\DEVELOPERDB;;Database=Army;Trusted_Connection=True;")
-                .Options;
-            using (var armyDbContext = new ArmyDbContext()) 
-            {
-                var soldier = armyDbContext.Soldiers.ToListAsync();
-            }
+            /*            
+                var optionBuilder = new DbContextOptionsBuilder<ArmyDbContext>();
+                var options = optionBuilder
+                    .UseSqlServer(@"Server=DESKTOP-QBPEBIC\\DEVELOPERDB;Database=Army;Trusted_Connection=True;")
+                    .Options;
 
+                using (var armyDbContext = new ArmyDbContext(options)) 
+                {
+                    var soldier = armyDbContext.Soldiers.ToListAsync();
+                }
+            */
 
         }
     }

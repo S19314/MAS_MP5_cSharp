@@ -12,7 +12,15 @@ namespace MP5.Models
         public DbSet<Soldier> Soldiers { get; set; }
         public ArmyDbContext() { }
         public ArmyDbContext(DbContextOptions<ArmyDbContext> options) : base(options)
-        { }
+        {
+        //            Database.EnsureCreated();
+        }
+        
+        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        {
+            optionsBuilder.UseSqlServer(@"Server=DESKTOP-QBPEBIC\DEVELOPERDB;Database=Army;Trusted_Connection=True;");
+        }
+        
 
         protected override void OnModelCreating(ModelBuilder modelBuilder) 
         {
@@ -26,7 +34,7 @@ namespace MP5.Models
             modelBuilder.Entity<Soldier>()
                 .Property(e => e.SecondName)
                 .HasMaxLength(100);
-
         }
+        
     }
 }
