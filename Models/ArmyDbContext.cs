@@ -11,6 +11,9 @@ namespace MP5.Models
     {
         public DbSet<Soldier> Soldiers { get; set; }
         public DbSet<Warehouse> Warehouses { get; set; }
+        public DbSet<Firearm> Firearms { get; set; }
+        public DbSet<SniperRifle> SniperRifles { get; set; }
+        public DbSet<AssaultRifle> AssaultRifles { get; set; }
         public ArmyDbContext() { }
         public ArmyDbContext(DbContextOptions<ArmyDbContext> options) : base(options)
         {
@@ -37,7 +40,6 @@ namespace MP5.Models
                 .Property(e => e.SecondName)
                 .HasMaxLength(100);
 
-            // UP комментить или при добавлении новых данных он будет сравнивать с пролшлым? И добавлять новое, а старое не трогать и не матюкаться
 
             modelBuilder.Entity<Warehouse>()
                 .ToTable("Warehouse");
@@ -52,6 +54,28 @@ namespace MP5.Models
             modelBuilder.Entity<Warehouse>()
                 .Property(e => e.Address)
                 .HasMaxLength(120);
+
+
+            modelBuilder.Entity<Firearm>()
+                .ToTable("Firearm");
+            modelBuilder.Entity<Firearm>()
+                .HasKey(e => e.Id);
+            modelBuilder.Entity<Firearm>()
+                .Property(e => e.Name)
+                .HasMaxLength(100);
+
+            modelBuilder.Entity<AssaultRifle>()
+                .ToTable("AssaultRifle");
+            modelBuilder.Entity<AssaultRifle>()
+                .Property(e => e.FireMode)
+                .HasMaxLength(100);
+
+            modelBuilder.Entity<SniperRifle>()
+                .ToTable("SniperRifle");
+
+
+
+
         }
         
     }

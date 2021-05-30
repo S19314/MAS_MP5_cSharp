@@ -32,11 +32,30 @@ namespace MP5.Models
     public class AssaultRifle : Firearm
     {
         public string FireMode { get; set; }
+
+        public AssaultRifle(string fireMode) : base()
+        {
+            FireMode = fireMode;
+        }
+
+        public AssaultRifle(int id, string name, int magazineSize, double weight, double bulletSpeed, double fireDistance, string fireMode) : base(id, name, magazineSize, weight, bulletSpeed, fireDistance)
+        {
+            FireMode = fireMode;
+        }
     }
 
     public class SniperRifle : Firearm
     {
         public double MinimalScopeMagnification { get; set; }
         public double MaximalScopeMagnification { get; set; }
+        public SniperRifle()
+        {
+        }
+
+        public SniperRifle(int id, string name, int magazineSize, double weight, double bulletSpeed, double fireDistance, double maximalScopeMagnification, double minimalScopeMagnification) : base(id, name, magazineSize, weight, bulletSpeed, fireDistance)
+        {
+            MaximalScopeMagnification = maximalScopeMagnification;
+            MinimalScopeMagnification = minimalScopeMagnification;
+        }
     }
 }
