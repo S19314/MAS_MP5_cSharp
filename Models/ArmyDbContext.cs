@@ -23,7 +23,7 @@ namespace MP5.Models
         
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlServer(@"Server=DESKTOP-QBPEBIC\DEVELOPERDB;Database=Army;Trusted_Connection=True;");
+            optionsBuilder.UseSqlServer(@"Server=DESKTOP-QBPEBIC\DEVELOPERDB;Database=Army2;Trusted_Connection=True;");
         }
         
 

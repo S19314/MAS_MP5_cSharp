@@ -12,7 +12,7 @@ namespace MP5.Models
         public string Name { get; set; }
         public string Description { get; set; }
 
-        public int FirearmId { get; set; }
+        public int? FirearmId { get; set; }
         public Firearm Firearm { get; set; }
 
         public Attachment()
