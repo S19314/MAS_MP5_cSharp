@@ -73,8 +73,11 @@ namespace MP5.Models
             modelBuilder.Entity<SniperRifle>()
                 .ToTable("SniperRifle");
 
-
-
+            /*
+            modelBuilder.Entity<Firearm>()
+                .Property(e => e.Id)
+                .dele ;
+            */
 
         }
         
