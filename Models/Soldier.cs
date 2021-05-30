@@ -9,7 +9,7 @@ namespace MP5.Models
     public class Soldier
     {
 
-        public int Id { get; set; }
+        public int IdSoldier { get; set; }
         public string FirstName { get; set; }
         public string SecondName { get; set; }
         public string Rank { get; set; }
