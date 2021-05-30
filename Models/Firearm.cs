@@ -28,4 +28,15 @@ namespace MP5.Models
             FireDistance = fireDistance;
         }
     }
+
+    public class AssaultRifle : Firearm
+    {
+        public string FireMode { get; set; }
+    }
+
+    public class SniperRifle : Firearm
+    {
+        public double MinimalScopeMagnification { get; set; }
+        public double MaximalScopeMagnification { get; set; }
+    }
 }
