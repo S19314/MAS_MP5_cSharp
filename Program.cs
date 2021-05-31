@@ -8,14 +8,15 @@ namespace MP5
     {
         public static void Main(string[] args)
         {
-            
-
-            using (var armyDbContext = new ArmyDbContext()) 
+            using (var dbContext = new ArmyDbContext()) 
             {
-                ShowSoilders(armyDbContext);
+                ShowSoilders(dbContext);
+                AddSoilders(dbContext);
+                ShowSoilders(dbContext);
+                RemoveSoilders(dbContext);
+                ShowSoilders(dbContext);
             }
-            
-
+         
         }
 
         public static void ShowSoilders(ArmyDbContext dbContext) 
@@ -73,5 +74,23 @@ namespace MP5
             }
         }
 
+        public static void AddSoilders(ArmyDbContext dbContext) 
+        {
+            Soldier soldier = new Soldier { FirstName = "John", SecondName = "Weak", Rank = "Silver" };
+            Soldier soldier1 = new Soldier { FirstName = "John", SecondName = "Price", Rank = "Captain" };
+            dbContext.Soldiers.Add(soldier);
+            // dbContext.Soldiers.Add(soldier1);
+            dbContext.SaveChanges();
+        }
+
+        public static void RemoveSoilders(ArmyDbContext dbContext) 
+        {
+            var soilder = dbContext.Soldiers
+                .FirstOrDefaultAsync(p => p.FirstName.Equals("John"))
+                .Result;
+            dbContext.Soldiers.Remove(soilder);
+            dbContext.SaveChanges();
+
+        }
     }
 }
