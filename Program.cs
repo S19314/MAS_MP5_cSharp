@@ -17,15 +17,23 @@ namespace MP5
                 RemoveSoilders(dbContext);
                 ShowSoilders(dbContext);
                 */
+                
+                ShowWarehouse(dbContext);
+
+                AddWarehouse(dbContext);
+                ShowWarehouse(dbContext);
+                RemoveWarehouse(dbContext);
+                ShowWarehouse(dbContext);
+                /*                */
 
             }
-         
+
         }
 
         public static void ShowSoilders(ArmyDbContext dbContext) 
         {
             var soldiers = dbContext.Soldiers.ToListAsync().Result;
-            Console.WriteLine("Soilders");
+            Console.WriteLine("Soldiers");
             foreach (var soilder in soldiers)
             {
                 Console.WriteLine(soilder);
@@ -92,6 +100,23 @@ namespace MP5
                 .FirstOrDefaultAsync(p => p.FirstName.Equals("John"))
                 .Result;
             dbContext.Soldiers.Remove(soilder);
+            dbContext.SaveChanges();
+
+        }
+    public static void AddWarehouse(ArmyDbContext dbContext) 
+        {
+            Warehouse warehouse = new Warehouse { Name = "Plamia", Address="Moscow", CapacityInBoxes = 1000 };
+
+            dbContext.Warehouses.Add(warehouse);   
+            dbContext.SaveChanges();
+        }
+
+        public static void RemoveWarehouse(ArmyDbContext dbContext) 
+        {
+            var warehouse = dbContext.Warehouses
+                .FirstOrDefaultAsync(p => p.CapacityInBoxes < 1001)
+                .Result;
+            dbContext.Warehouses.Remove(warehouse);
             dbContext.SaveChanges();
 
         }

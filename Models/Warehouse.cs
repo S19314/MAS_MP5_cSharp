@@ -24,7 +24,16 @@ namespace MP5.Models
             this.Address = address;
             this.CapacityInBoxes = capacityInBoxes;
         }
+        public string GetShortInfo()
+        {
+            string info = string.Format("Warehouse:\n\t IdWarehouse: {0}, Name: {1}, Address: {2}, CapacityInBoxes: {3};", IdWarehouse, Name, Address, CapacityInBoxes);
 
-        
+            return info;
+        }
+        public override string ToString()
+        {
+            return GetShortInfo();
+        }
+
     }
 }
