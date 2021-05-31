@@ -49,6 +49,9 @@ namespace MP5.Models
     {
         public string FireMode { get; set; }
 
+        public AssaultRifle() 
+        {
+        }
         public AssaultRifle(string fireMode) : base()
         {
             FireMode = fireMode;

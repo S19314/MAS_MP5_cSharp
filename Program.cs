@@ -148,5 +148,41 @@ namespace MP5
             dbContext.Firearms.Remove(firearm);
             dbContext.SaveChanges();
         }
+
+        public static void AddAssaultRifle(ArmyDbContext dbContext)
+        {
+            var firearm = new AssaultRifle { Name = "Oden", BulletSpeed = 1123.2, FireDistance = 999.0, MagazineSize = 20, Weight = 15.2, FireMode="2 bullets"};
+
+            dbContext.Firearms.Add(firearm);
+            dbContext.SaveChanges();
+        }
+
+        public static void RemoveAssaultRifle(ArmyDbContext dbContext)
+        {
+            var firearm = dbContext.AssaultRifles
+                .FirstOrDefaultAsync(p => p.MagazineSize < 30)
+                .Result;
+            dbContext.Firearms.Remove(firearm);
+            dbContext.SaveChanges();
+        }
+    
+        public static void AddSniperRifle(ArmyDbContext dbContext)
+        {
+            var firearm = new SniperRifle { Name = "AX-50", BulletSpeed = 1323.2, FireDistance = 2999.0, MagazineSize = 5, Weight = 18.2,MinimalScopeMagnification=20, MaximalScopeMagnification=20};
+
+            dbContext.Firearms.Add(firearm);
+            dbContext.SaveChanges();
+        }
+
+        public static void RemoveSniperRifle(ArmyDbContext dbContext)
+        {
+            var firearm = dbContext.SniperRifles
+                .FirstOrDefaultAsync(p => p.MinimalScopeMagnification < 30)
+                .Result;
+            dbContext.Firearms.Remove(firearm);
+            dbContext.SaveChanges();
+        }
+
+
     }
 }
