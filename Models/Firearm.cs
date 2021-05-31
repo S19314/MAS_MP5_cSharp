@@ -39,7 +39,13 @@ namespace MP5.Models
         }
         public override string ToString()
         {
-            return GetShortInfo();
+            string attachments = " ";
+            foreach (var attachment in Attachments) 
+            {
+                attachments += attachment.GetShortInfo() + "\n";
+            }
+
+            return GetShortInfo() + attachments;
         }
 
 

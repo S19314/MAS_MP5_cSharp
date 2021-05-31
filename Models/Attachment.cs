@@ -34,5 +34,16 @@ namespace MP5.Models
             Description = description;
             FirearmId = firearmId;
         }
+
+        public string GetShortInfo()
+        {
+            string info = string.Format("Attachment:\n\t IdAttachment: {0}, Name: {1}, Description: {2};", Id, Name, Description);
+
+            return info;
+        }
+        public override string ToString()
+        {
+            return GetShortInfo() + Firearm.GetShortInfo();
+        }
     }
 }
