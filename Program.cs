@@ -19,12 +19,23 @@ namespace MP5
                 */
                 
                 ShowWarehouse(dbContext);
-
+                /* 
                 AddWarehouse(dbContext);
+                
                 ShowWarehouse(dbContext);
                 RemoveWarehouse(dbContext);
                 ShowWarehouse(dbContext);
-                /*                */
+                               */
+
+                ShowFirearm(dbContext);
+                /* 
+                AddFirearm(dbContext);
+                
+                ShowFirearm(dbContext);
+                RemoveFirearm(dbContext);
+                ShowFirearm(dbContext);
+                               */
+
 
             }
 
@@ -103,7 +114,7 @@ namespace MP5
             dbContext.SaveChanges();
 
         }
-    public static void AddWarehouse(ArmyDbContext dbContext) 
+        public static void AddWarehouse(ArmyDbContext dbContext) 
         {
             Warehouse warehouse = new Warehouse { Name = "Plamia", Address="Moscow", CapacityInBoxes = 1000 };
 
@@ -119,6 +130,23 @@ namespace MP5
             dbContext.Warehouses.Remove(warehouse);
             dbContext.SaveChanges();
 
+        }
+    
+        public static void AddFirearm(ArmyDbContext dbContext) 
+        {
+            Firearm firearm = new Firearm { Name = "Oden", BulletSpeed=1123.2, FireDistance=999.0, MagazineSize=20, Weight=15.2};
+
+            dbContext.Firearms.Add(firearm);   
+            dbContext.SaveChanges();
+        }
+
+        public static void RemoveFirearm(ArmyDbContext dbContext) 
+        {
+            var firearm = dbContext.Firearms
+                .FirstOrDefaultAsync(p => p.MagazineSize < 30)
+                .Result;
+            dbContext.Firearms.Remove(firearm);
+            dbContext.SaveChanges();
         }
     }
 }

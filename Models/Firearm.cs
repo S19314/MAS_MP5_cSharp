@@ -29,6 +29,20 @@ namespace MP5.Models
             BulletSpeed = bulletSpeed;
             FireDistance = fireDistance;
         }
+
+
+        public virtual string GetShortInfo()
+        {
+            string info = string.Format("Id: {0}, Name: {1},  MagazineSize{2}, Weight{3}, BulletSpeed{4}, FireDistance{5};", Id, Name, MagazineSize, Weight, BulletSpeed, FireDistance);
+
+            return info;
+        }
+        public override string ToString()
+        {
+            return GetShortInfo();
+        }
+
+
     }
 
     public class AssaultRifle : Firearm
@@ -44,6 +58,17 @@ namespace MP5.Models
         {
             FireMode = fireMode;
         }
+
+        public override string GetShortInfo()
+        {
+            string info = string.Format("AssaultRifle: FireMode: {0}", FireMode);
+            // info += base.GetShortInfo();
+            return info;
+        }
+        public override string ToString()
+        {
+            return GetShortInfo() + base.ToString();
+        }
     }
 
     public class SniperRifle : Firearm
@@ -58,6 +83,17 @@ namespace MP5.Models
         {
             MaximalScopeMagnification = maximalScopeMagnification;
             MinimalScopeMagnification = minimalScopeMagnification;
+        }
+
+        public override string GetShortInfo()
+        {
+            string info = string.Format("SniperRifle:  MinimalScopeMagnification: {0}, MaximalScopeMagnification: {1]", MinimalScopeMagnification, MaximalScopeMagnification);
+            // info += base.GetShortInfo();
+            return info;
+        }
+        public override string ToString()
+        {
+            return GetShortInfo() + base.ToString();
         }
     }
 }
