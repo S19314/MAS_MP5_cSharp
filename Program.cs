@@ -183,6 +183,24 @@ namespace MP5
             dbContext.SaveChanges();
         }
 
+        public static void AddAttachment(ArmyDbContext dbContext)
+        {
+            var bipod = new Attachment { Name = "Bipod", Description = "A bipod is a V-shaped portable attachment." };
+            var firearm = new SniperRifle { Name = "AX-50", BulletSpeed = 1323.2, FireDistance = 2999.0, MagazineSize = 5, Weight = 18.2, MinimalScopeMagnification = 20, MaximalScopeMagnification = 20 };
+            firearm.Attachments.Add(bipod);
 
+            dbContext.Firearms.Add(firearm);
+            dbContext.Attachments.Add(bipod);
+            dbContext.SaveChanges();
+        }
+
+        public static void RemoveAttachment(ArmyDbContext dbContext)
+        {
+            var firearm = dbContext.SniperRifles
+                .FirstOrDefaultAsync(p => p.MinimalScopeMagnification < 30)
+                .Result;
+            dbContext.Firearms.Remove(firearm);
+            dbContext.SaveChanges();
+        }
     }
 }
