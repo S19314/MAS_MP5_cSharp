@@ -15,7 +15,7 @@ namespace MP5.Models
         public double BulletSpeed { get; set; }
         public double FireDistance { get; set; }
 
-        public ICollection<Attachment> Attachments { get; set; }
+        public ICollection<Attachment> Attachments { get; set; } = new List<Attachment>();
 
         public Firearm()
         {
@@ -96,7 +96,8 @@ namespace MP5.Models
 
         public override string GetShortInfo()
         {
-            string info = string.Format("SniperRifle:  MinimalScopeMagnification: {0}, MaximalScopeMagnification: {1]", MinimalScopeMagnification, MaximalScopeMagnification);
+            // string info = string.Format("SniperRifle:  MinimalScopeMagnification: {0}, MaximalScopeMagnification: {1]", MinimalScopeMagnification, MaximalScopeMagnification);
+            string info = "SniperRifle:  MinimalScopeMagnification: " + MinimalScopeMagnification + ", MaximalScopeMagnification: " + MaximalScopeMagnification;
             // info += base.GetShortInfo();
             return info;
         }

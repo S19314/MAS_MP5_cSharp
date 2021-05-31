@@ -1,6 +1,8 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using MP5.Models;
 using System;
+using System.Collections.Generic;
+
 
 namespace MP5
 {
@@ -28,12 +30,39 @@ namespace MP5
                                */
 
                 ShowFirearm(dbContext);
+
+                //                AddFirearm(dbContext);
                 /* 
-                AddFirearm(dbContext);
-                
                 ShowFirearm(dbContext);
                 RemoveFirearm(dbContext);
                 ShowFirearm(dbContext);
+                               */
+
+                ShowSniperRifle(dbContext);
+
+                //AddSniperRifle(dbContext);
+                /* 
+                ShowSniperRifle(dbContext);
+                RemoveSniperRifle(dbContext);
+                ShowSniperRifle(dbContext);
+                               */
+
+                ShowAssaultRifle(dbContext);
+
+                //AddAssaultRifle(dbContext);
+                /* 
+                ShowAssaultRifle(dbContext);
+                RemoveAssaultRifle(dbContext);
+                ShowAssaultRifle(dbContext);
+                               */
+
+                ShowAttachment(dbContext);
+
+                //AddAttachment(dbContext);
+                /* 
+                ShowAttachment(dbContext);
+                RemoveAttachment(dbContext);
+                ShowAttachment(dbContext);
                                */
 
 
@@ -186,7 +215,7 @@ namespace MP5
         public static void AddAttachment(ArmyDbContext dbContext)
         {
             var bipod = new Attachment { Name = "Bipod", Description = "A bipod is a V-shaped portable attachment." };
-            var firearm = new SniperRifle { Name = "AX-50", BulletSpeed = 1323.2, FireDistance = 2999.0, MagazineSize = 5, Weight = 18.2, MinimalScopeMagnification = 20, MaximalScopeMagnification = 20 };
+            var firearm = new SniperRifle { Name = "AX-50", BulletSpeed = 1323.2, FireDistance = 2999.0, MagazineSize = 5, Weight = 18.2, MinimalScopeMagnification = 20, MaximalScopeMagnification = 20};
             firearm.Attachments.Add(bipod);
 
             dbContext.Firearms.Add(firearm);
@@ -196,10 +225,10 @@ namespace MP5
 
         public static void RemoveAttachment(ArmyDbContext dbContext)
         {
-            var firearm = dbContext.SniperRifles
-                .FirstOrDefaultAsync(p => p.MinimalScopeMagnification < 30)
+            var attachment = dbContext.Attachments
+                .FirstOrDefaultAsync(p => p.Name.Equals("Bipod"))
                 .Result;
-            dbContext.Firearms.Remove(firearm);
+            dbContext.Attachments.Remove(attachment);
             dbContext.SaveChanges();
         }
     }
