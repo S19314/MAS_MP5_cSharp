@@ -25,5 +25,17 @@ namespace MP5.Models
             this.SecondName = secondName;
             this.Rank = rank;
         }
+
+
+        public string GetShortInfo() 
+        {
+            string info = string.Format("Soldeir:\n\t IdSoldeir: {0}, FirstName: {1}, SecondName: {2}, Rank: {3};", IdSoldier, FirstName, SecondName, Rank);
+
+            return info; 
+        }
+        public override string ToString()
+        {
+            return GetShortInfo();
+        }
     }
 }

@@ -11,10 +11,13 @@ namespace MP5
             using (var dbContext = new ArmyDbContext()) 
             {
                 ShowSoilders(dbContext);
+                /*
                 AddSoilders(dbContext);
                 ShowSoilders(dbContext);
                 RemoveSoilders(dbContext);
                 ShowSoilders(dbContext);
+                */
+
             }
          
         }

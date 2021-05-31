@@ -87,15 +87,6 @@ namespace MP5.Models
                 .HasOne(b => b.Firearm)
                 .WithMany(a => a.Attachments)
                 .OnDelete(DeleteBehavior.SetNull);
-
-            /*
-            modelBuilder.Entity<Attachment>()
-                // .Property(e => e.FirearmId)
-                .HasOptional;
-            */
-
-
-
         }
         
     }
