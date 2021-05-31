@@ -93,6 +93,9 @@ namespace MP5.Models
                 // .Property(e => e.FirearmId)
                 .HasOptional;
             */
+
+
+
         }
         
     }
