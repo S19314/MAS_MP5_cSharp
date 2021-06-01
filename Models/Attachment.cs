@@ -13,8 +13,20 @@ namespace MP5.Models
         public string Description { get; set; }
 
         public int? FirearmId { get; set; }
-        public Firearm Firearm { get; set; }
-
+        public Firearm firearm;
+        public Firearm Firearm
+        {
+            get { return firearm; }
+            set 
+            {
+                if (value == null) 
+                {
+                    throw new Exception("Firearm couldn't be null");
+                }
+                firearm = value; 
+                firearm.AddAttachment(this);
+            }
+        }
         public Attachment()
         {
         }

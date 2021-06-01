@@ -12,7 +12,7 @@ namespace MP5
         {
             using (var dbContext = new ArmyDbContext()) 
             {
-                AddSniperRifleWithAttachment(dbContext);
+                // AddSniperRifleWithAttachment(dbContext);
 
                 // ShowSoilders(dbContext);
                 /*
@@ -211,7 +211,7 @@ namespace MP5
             var firearm = new SniperRifle { Name = "Crossbow2", BulletSpeed = 1323.2, FireDistance = 2999.0, MagazineSize = 5, Weight = 18.2, MinimalScopeMagnification = 20, MaximalScopeMagnification = 20, Attachments = new List<Attachment>() };
             var attachment = new Attachment { Name = "tactical laser", Description = "+10% accurancy" };
             firearm.Attachments.Add(attachment);
-            // dbContext.Firearms.Add(firearm);
+            
             dbContext.SniperRifles.Add(firearm);
             dbContext.Attachments.Add(attachment);
             dbContext.SaveChanges();
@@ -230,9 +230,9 @@ namespace MP5
         {
             var bipod = new Attachment { Name = "Bipod", Description = "A bipod is a V-shaped portable attachment." };
             var firearm = new SniperRifle { Name = "AX-50", BulletSpeed = 1323.2, FireDistance = 2999.0, MagazineSize = 5, Weight = 18.2, MinimalScopeMagnification = 20, MaximalScopeMagnification = 20, Attachments = new List<Attachment>()};
-            firearm.Attachments.Add(bipod);
+            firearm.AddAttachment(bipod);
 
-            dbContext.SniperRifles.Add(firearm); // Изменить с FireArm в SniperRifle
+            dbContext.SniperRifles.Add(firearm); 
             dbContext.Attachments.Add(bipod);
             dbContext.SaveChanges();
         }

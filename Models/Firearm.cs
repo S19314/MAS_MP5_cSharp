@@ -31,6 +31,27 @@ namespace MP5.Models
         }
 
 
+        public void AddAttachment(Attachment attachment)
+        {
+            if (attachment == null)
+            {
+                throw new Exception("Attachment couldn't be null");
+            }
+            Attachments.Add(attachment);
+            attachment.Firearm = this;
+        }
+        public void RemoveAttachment(Attachment attachment) 
+        { 
+            if(attachment == null) 
+            {
+                throw new Exception("Attachment couldn't be null" );
+            }
+            Attachments.Remove(attachment); 
+            attachment.Firearm = null; 
+        }
+
+
+
         public virtual string GetShortInfo()
         {
             string info = string.Format("Id: {0}, Name: {1},  MagazineSize{2}, Weight{3}, BulletSpeed{4}, FireDistance{5};", Id, Name, MagazineSize, Weight, BulletSpeed, FireDistance);
