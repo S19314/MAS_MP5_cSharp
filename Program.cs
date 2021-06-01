@@ -12,7 +12,7 @@ namespace MP5
         {
             using (var dbContext = new ArmyDbContext()) 
             {
-                // AddSniperRifleWithAttachment(dbContext);
+                AddSniperRifleWithAttachment(dbContext);
 
                 // ShowSoilders(dbContext);
                 /*
@@ -185,7 +185,7 @@ namespace MP5
         {
             var firearm = new AssaultRifle { Name = "Oden", BulletSpeed = 1123.2, FireDistance = 999.0, MagazineSize = 20, Weight = 15.2, FireMode="2 bullets"};
 
-            dbContext.Firearms.Add(firearm);
+            dbContext.AssaultRifles.Add(firearm);
             dbContext.SaveChanges();
         }
 
@@ -202,16 +202,17 @@ namespace MP5
         {
             var firearm = new SniperRifle { Name = "AX-50", BulletSpeed = 1323.2, FireDistance = 2999.0, MagazineSize = 5, Weight = 18.2,MinimalScopeMagnification=20, MaximalScopeMagnification=20};
 
-            dbContext.Firearms.Add(firearm);
+            dbContext.SniperRifles.Add(firearm);
             dbContext.SaveChanges();
         }
 
         public static void AddSniperRifleWithAttachment(ArmyDbContext dbContext)
         {
-            var firearm = new SniperRifle { Name = "Crossbow", BulletSpeed = 1323.2, FireDistance = 2999.0, MagazineSize = 5, Weight = 18.2, MinimalScopeMagnification = 20, MaximalScopeMagnification = 20, Attachments = new List<Attachment>() };
+            var firearm = new SniperRifle { Name = "Crossbow2", BulletSpeed = 1323.2, FireDistance = 2999.0, MagazineSize = 5, Weight = 18.2, MinimalScopeMagnification = 20, MaximalScopeMagnification = 20, Attachments = new List<Attachment>() };
             var attachment = new Attachment { Name = "tactical laser", Description = "+10% accurancy" };
             firearm.Attachments.Add(attachment);
-            dbContext.Firearms.Add(firearm);
+            // dbContext.Firearms.Add(firearm);
+            dbContext.SniperRifles.Add(firearm);
             dbContext.Attachments.Add(attachment);
             dbContext.SaveChanges();
         }
@@ -231,7 +232,7 @@ namespace MP5
             var firearm = new SniperRifle { Name = "AX-50", BulletSpeed = 1323.2, FireDistance = 2999.0, MagazineSize = 5, Weight = 18.2, MinimalScopeMagnification = 20, MaximalScopeMagnification = 20, Attachments = new List<Attachment>()};
             firearm.Attachments.Add(bipod);
 
-            dbContext.Firearms.Add(firearm); // Изменить с FireArm в SniperRifle
+            dbContext.SniperRifles.Add(firearm); // Изменить с FireArm в SniperRifle
             dbContext.Attachments.Add(bipod);
             dbContext.SaveChanges();
         }
