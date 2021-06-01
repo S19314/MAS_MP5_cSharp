@@ -15,7 +15,7 @@ namespace MP5.Models
         public double BulletSpeed { get; set; }
         public double FireDistance { get; set; }
 
-        public ICollection<Attachment> Attachments { get; set; } = new List<Attachment>();
+        public ICollection<Attachment> Attachments { get; set; } 
 
         public Firearm()
         {
@@ -37,15 +37,22 @@ namespace MP5.Models
 
             return info;
         }
-        public override string ToString()
+        public string GetAttachmentsInfo() 
         {
             string attachments = " ";
-            foreach (var attachment in Attachments) 
+            if (Attachments == null) 
             {
-                attachments += attachment.GetShortInfo() + "\n";
+                return attachments;
             }
-
-            return GetShortInfo() + attachments;
+            foreach (var attachment in Attachments)
+            {
+                attachments += attachment.GetShortInfo() + "\n\t";
+            }
+            return attachments;
+        }
+        public override string ToString()
+        {
+            return GetShortInfo() + GetAttachmentsInfo();
         }
 
 
@@ -68,15 +75,15 @@ namespace MP5.Models
             FireMode = fireMode;
         }
 
-        public override string GetShortInfo()
+        public string GetShortInfoAssaultRifle()
         {
-            string info = string.Format("AssaultRifle: FireMode: {0}", FireMode);
-            // info += base.GetShortInfo();
+            string info = " AssaultRifle: FireMode: " + FireMode + " " + GetShortInfo();
+            
             return info;
         }
         public override string ToString()
         {
-            return GetShortInfo() + base.ToString();
+            return GetShortInfoAssaultRifle() + GetAttachmentsInfo();
         }
     }
 
@@ -94,16 +101,16 @@ namespace MP5.Models
             MinimalScopeMagnification = minimalScopeMagnification;
         }
 
-        public override string GetShortInfo()
+        public string GetShortInfoSniperRifle()
         {
             // string info = string.Format("SniperRifle:  MinimalScopeMagnification: {0}, MaximalScopeMagnification: {1]", MinimalScopeMagnification, MaximalScopeMagnification);
-            string info = "SniperRifle:  MinimalScopeMagnification: " + MinimalScopeMagnification + ", MaximalScopeMagnification: " + MaximalScopeMagnification;
-            // info += base.GetShortInfo();
+            string info =  " SniperRifle:  MinimalScopeMagnification: " + MinimalScopeMagnification + ", MaximalScopeMagnification: " + MaximalScopeMagnification + " " + GetShortInfo();
+
             return info;
         }
         public override string ToString()
         {
-            return GetShortInfo() + base.ToString();
+            return GetShortInfoSniperRifle() + GetAttachmentsInfo();
         }
     }
 }
